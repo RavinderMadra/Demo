@@ -36,6 +36,8 @@ public partial class tblProductSold
 
     public string ModifiedBy { get; set; }
 
+    public System.DateTime DateSold { get; set; }
+
 
 
     public virtual tblCustomer tblCustomer { get; set; }

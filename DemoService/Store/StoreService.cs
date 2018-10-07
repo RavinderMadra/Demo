@@ -11,7 +11,7 @@ namespace DemoService.Store
 {
   public class StoreService
     {
-        private TransportManagementSystemEntities _Context = new TransportManagementSystemEntities();
+        private OnBoadTaskEntities _Context = new OnBoadTaskEntities();
 
         #region Public_Methods
 
@@ -28,11 +28,11 @@ namespace DemoService.Store
 
 
         /// Save Store        
-        public bool SaveStores(StoreViewModel customerViewModel)
+        public bool SaveStores(StoreViewModel storeViewModel)
         {
             bool status = false;
             tblStore stores = new tblStore();
-            Mapper.Map(customerViewModel, stores);
+            Mapper.Map(storeViewModel, stores);
 
             stores.IsActive = true;
             stores.CreatedDate = DateTime.Now;
@@ -46,39 +46,8 @@ namespace DemoService.Store
             return status;
             // for new users
         }
-
-
-        public bool UpdateProducts(ProductViewModel productViewModel)
-        {
-            bool status = false;
-            try
-            {
-                //var _usrsaltdetails = _Context.Users.FirstOrDefault(x => x.Id == user.Id);
-                var _productDetails = _Context.tblProducts.Find(productViewModel.Id);
-
-                if (_productDetails != null)
-                {
-                    Mapper.Map(productViewModel, _productDetails);
-                    _productDetails.ModifiedDate = DateTime.Now;
-                    _Context.Configuration.ValidateOnSaveEnabled = false;
-                    _Context.SaveChanges();
-                    status = true;
-
-                }
-
-            }
-
-            catch (Exception ex)
-            {
-
-            }
-            // for new product
-            return status;
-        }
-
-
-
-
+        
+        
         /// Update Store information        
         public bool UpdateStores(StoreViewModel storeViewModel)
         {
@@ -128,8 +97,21 @@ namespace DemoService.Store
             }
 
         }
-     
-                 
+
+        
+        /// Get all Stores for drop down (get only Id and Name)
+        public List<StoreViewModel> GetStoresForDropDown()
+        {
+            return (from customer in GetAllStores()
+                    orderby customer.Name
+                    select new StoreViewModel
+                    {
+                        Id = customer.Id,
+                        Name = customer.Name
+                    }).ToList();
+        }
+
+
         #endregion
     }
 }

@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs/OnboardTask/v15/Server/sqlite3
+/.vs/OnboardTask/v15
+/DemoService
+/DemoModel
+/DemoCore
+/OnboardTask/bin
+/OnboardTask/obj/Debug

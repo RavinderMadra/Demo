@@ -54,6 +54,7 @@
     <Compile Include="Customer\CustomerService.cs" />
     <Compile Include="Product\ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sale\SaleService.cs" />
     <Compile Include="Store\StoreService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,5 +71,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

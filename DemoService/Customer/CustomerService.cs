@@ -11,7 +11,7 @@ namespace DemoService.Customer
 {
    public class CustomerService
     {
-        TransportManagementSystemEntities _Context = new TransportManagementSystemEntities();
+        OnBoadTaskEntities _Context = new OnBoadTaskEntities();
 
         #region Public_Methods
 
@@ -20,7 +20,7 @@ namespace DemoService.Customer
         {
             List<CustomerViewModel> entities = new List<CustomerViewModel>();
             // making values as trim  
-            var list = _Context.tblCustomer.Where(x => x.IsActive == true).ToList();
+            var list = _Context.tblCustomers.Where(x => x.IsActive == true).ToList();
             Mapper.Map(list, entities);
             return entities;
         }               
@@ -38,7 +38,7 @@ namespace DemoService.Customer
             customer.ModifiedDate = DateTime.Now;
             customer.CreatedBy = "101";
             customer.ModifiedBy = "101";
-            _Context.tblCustomer.Add(customer);
+            _Context.tblCustomers.Add(customer);
             _Context.Configuration.ValidateOnSaveEnabled = true;
             _Context.SaveChanges();
             status = true;
@@ -50,7 +50,7 @@ namespace DemoService.Customer
         /// Get Customers detail by Id
         public CustomerViewModel GetCustomerDetailById(long Id)
         {
-            tblCustomer customers = _Context.tblCustomer.Where(x => x.Id == Id).FirstOrDefault();
+            tblCustomer customers = _Context.tblCustomers.Where(x => x.Id == Id).FirstOrDefault();
             return Mapper.Map(customers, new CustomerViewModel());
 
         }
@@ -61,8 +61,8 @@ namespace DemoService.Customer
             bool status = false;
             try
             {
-                //var _usrsaltdetails = _Context.Users.FirstOrDefault(x => x.Id == user.Id);
-                var _customerDetail = _Context.tblCustomer.Find(customerViewModel.Id);
+
+                var _customerDetail = _Context.tblCustomers.Find(customerViewModel.Id);
 
                 if (_customerDetail != null)
                 {
@@ -78,19 +78,19 @@ namespace DemoService.Customer
 
             catch (Exception ex)
             {
+                //ex.Message;
             }
             // for new users
             return status;
         }
 
         
-        /// Delete Customers
-       
+        /// Delete Customers       
         public bool Delete(long Id)
         {
             try
             {
-                var entity = _Context.tblCustomer.Find(Id);
+                var entity = _Context.tblCustomers.Find(Id);
                 if (entity != null)
                 {
                     entity.IsActive = false;
@@ -108,8 +108,22 @@ namespace DemoService.Customer
             }
 
         }
-     
-            
+
+
+        /// Get all Customer for drop down (get only Id and Name)
+        public List<CustomerViewModel> GetCustomersForDropDown()
+        {
+            return (from customer in GetAllCustomer()
+                    orderby customer.Name
+                    select new CustomerViewModel
+                    {
+                        Id = customer.Id,
+                        Name = customer.Name
+                    }).ToList();
+        }
+
+
+
         #endregion
     }
 }

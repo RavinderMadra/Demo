@@ -17,11 +17,14 @@ using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
+using System.Data.Entity.Core.Objects;
+using System.Linq;
 
-public partial class TransportManagementSystemEntities : DbContext
+
+public partial class OnBoadTaskEntities : DbContext
 {
-    public TransportManagementSystemEntities()
-        : base("name=TransportManagementSystemEntities")
+    public OnBoadTaskEntities()
+        : base("name=OnBoadTaskEntities")
     {
 
         this.Configuration.LazyLoadingEnabled = false;
@@ -34,13 +37,25 @@ public partial class TransportManagementSystemEntities : DbContext
     }
 
 
-    public virtual DbSet<tblCustomer> tblCustomer { get; set; }
+    public virtual DbSet<tblCustomer> tblCustomers { get; set; }
 
     public virtual DbSet<tblProduct> tblProducts { get; set; }
 
     public virtual DbSet<tblProductSold> tblProductSolds { get; set; }
 
     public virtual DbSet<tblStore> tblStores { get; set; }
+
+
+    public virtual ObjectResult<GetSalesDetail_Result> GetSalesDetail(Nullable<long> id)
+    {
+
+        var idParameter = id.HasValue ?
+            new ObjectParameter("Id", id) :
+            new ObjectParameter("Id", typeof(long));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesDetail_Result>("GetSalesDetail", idParameter);
+    }
 
 }
 

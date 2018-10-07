@@ -12,7 +12,7 @@ namespace DemoService.Product
     
    public  class ProductService
     {
-        TransportManagementSystemEntities _Context = new TransportManagementSystemEntities();
+        OnBoadTaskEntities _Context = new OnBoadTaskEntities();
 
         public List<ProductViewModel> GetAllProducts()
         {
@@ -97,5 +97,19 @@ namespace DemoService.Product
 
         }
 
+
+        /// Get all Product for drop down (get only Id and Name)
+
+        public List<ProductViewModel> GetProductsForDropDown()
+        {
+            return (from customer in GetAllProducts()
+                    orderby customer.Name
+                    select new ProductViewModel
+                    {
+                        Id = customer.Id,
+                        Name = customer.Name
+                    }).ToList();
+
+        }
     }
 }

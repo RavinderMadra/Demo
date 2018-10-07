@@ -37,9 +37,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="StoreId" Type="int" Nullable="false" />
+          <Property Name="DateSold" Type="date" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedDate" Type="date" Nullable="false" />
           <Property Name="ModifiedDate" Type="date" Nullable="false" />
@@ -95,6 +96,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetSalesDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="bigint" Mode="In" />
+        </Function>
         <EntityContainer Name="TransportManagementSystemModelStoreContainer">
           <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
@@ -117,7 +121,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TransportManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="TransportManagementSystemEntities" annotation:LazyLoadingEnabled="false">
+        <EntityContainer Name="OnBoadTaskEntities" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="tblCustomers" EntityType="TransportManagementSystemModel.tblCustomer" />
           <EntitySet Name="tblProducts" EntityType="TransportManagementSystemModel.tblProduct" />
           <EntitySet Name="tblProductSolds" EntityType="TransportManagementSystemModel.tblProductSold" />
@@ -134,6 +138,9 @@
             <End Role="tblStore" EntitySet="tblStores" />
             <End Role="tblProductSold" EntitySet="tblProductSolds" />
           </AssociationSet>
+          <FunctionImport Name="GetSalesDetail" ReturnType="Collection(TransportManagementSystemModel.GetSalesDetail_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int64" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="tblCustomer">
           <Key>
@@ -180,6 +187,7 @@
           <NavigationProperty Name="tblCustomer" Relationship="TransportManagementSystemModel.FK_tblProductSold_tblCustomer" FromRole="tblProductSold" ToRole="tblCustomer" />
           <NavigationProperty Name="tblProduct" Relationship="TransportManagementSystemModel.FK_tblProductSold_tblProduct" FromRole="tblProductSold" ToRole="tblProduct" />
           <NavigationProperty Name="tblStore" Relationship="TransportManagementSystemModel.FK_tblProductSold_tblStore" FromRole="tblProductSold" ToRole="tblStore" />
+          <Property Name="DateSold" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="tblStore">
           <Key>
@@ -231,12 +239,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetSalesDetail_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="DateTime" Name="PurchasedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CustomerName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CustomerId" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="StoreName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="StoreId" Nullable="false" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TransportManagementSystemModelStoreContainer" CdmEntityContainer="TransportManagementSystemEntities">
+        <EntityContainerMapping StorageEntityContainer="TransportManagementSystemModelStoreContainer" CdmEntityContainer="OnBoadTaskEntities">
           <EntitySetMapping Name="tblCustomers">
             <EntityTypeMapping TypeName="TransportManagementSystemModel.tblCustomer">
               <MappingFragment StoreEntitySet="tblCustomer">
@@ -269,6 +287,7 @@
           <EntitySetMapping Name="tblProductSolds">
             <EntityTypeMapping TypeName="TransportManagementSystemModel.tblProductSold">
               <MappingFragment StoreEntitySet="tblProductSold">
+                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
@@ -295,6 +314,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetSalesDetail" FunctionName="TransportManagementSystemModel.Store.GetSalesDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TransportManagementSystemModel.GetSalesDetail_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PurchasedDate" ColumnName="PurchasedDate" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
