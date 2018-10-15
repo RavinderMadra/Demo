@@ -44,7 +44,7 @@ function Add() {
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         success: function (result) {
-            $('.modal-backdrop.in').css("opacity", "0");
+            $('.modal-backdrop.in').remove();
             loadData();
             $('#myModal').modal('hide');
         },
@@ -91,7 +91,7 @@ function Update() {
         Name: $('#Name').val(),
         Address: $('#Address').val()
     };
-    debugger
+    
     $.ajax({
         url: "/Store/Update",
         data: JSON.stringify(Obj),

@@ -139,7 +139,7 @@
             <End Role="tblProductSold" EntitySet="tblProductSolds" />
           </AssociationSet>
           <FunctionImport Name="GetSalesDetail" ReturnType="Collection(TransportManagementSystemModel.GetSalesDetail_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int64" />
+          <Parameter Name="Id" Mode="In" Type="Int64" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="tblCustomer">
@@ -241,13 +241,13 @@
         </Association>
         <ComplexType Name="GetSalesDetail_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="DateTime" Name="PurchasedDate" Nullable="true" Precision="23" />
           <Property Type="String" Name="CustomerName" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="CustomerId" Nullable="false" />
           <Property Type="String" Name="ProductName" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="ProductId" Nullable="false" />
           <Property Type="String" Name="StoreName" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="StoreId" Nullable="false" />
+          <Property Type="DateTime" Name="DateSold" Nullable="true" Precision="23" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -318,13 +318,13 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="TransportManagementSystemModel.GetSalesDetail_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PurchasedDate" ColumnName="PurchasedDate" />
                 <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="StoreName" ColumnName="StoreName" />
                 <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

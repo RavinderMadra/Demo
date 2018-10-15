@@ -102,6 +102,7 @@
     <Content Include="Global.asax" />
     <Content Include="html\Js\Customer.js" />
     <Content Include="html\Js\Product.js" />
+    <Content Include="html\Js\Sale.js" />
     <Content Include="html\Js\Store.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -117,7 +118,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\SaleController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -136,6 +137,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\Sales\_SalesList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -145,7 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Sale\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DemoModel\DemoModel.csproj">

@@ -48,10 +48,13 @@ function Add() {
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         success: function (result) {
-                 loadData();
-                $('#myModal').modal('hide');
+            
+            $('.modal-backdrop.in').remove();
+            loadData();
+            $('#myModal').modal('hide');
         },
         error: function (errormessage) {
+            
                alert(errormessage.responseText);
         }
     });

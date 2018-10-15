@@ -102,15 +102,14 @@ namespace DemoService.Store
         /// Get all Stores for drop down (get only Id and Name)
         public List<StoreViewModel> GetStoresForDropDown()
         {
-            return (from customer in GetAllStores()
-                    orderby customer.Name
+            return (from store in GetAllStores()
+                    orderby store.Name
                     select new StoreViewModel
                     {
-                        Id = customer.Id,
-                        Name = customer.Name
+                        Id = store.Id,
+                        Name = store.Name
                     }).ToList();
         }
-
 
         #endregion
     }

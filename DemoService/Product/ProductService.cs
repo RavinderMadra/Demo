@@ -102,12 +102,12 @@ namespace DemoService.Product
 
         public List<ProductViewModel> GetProductsForDropDown()
         {
-            return (from customer in GetAllProducts()
-                    orderby customer.Name
+            return (from product in GetAllProducts()
+                    orderby product.Name
                     select new ProductViewModel
                     {
-                        Id = customer.Id,
-                        Name = customer.Name
+                        Id = product.Id,
+                        Name = product.Name
                     }).ToList();
 
         }
