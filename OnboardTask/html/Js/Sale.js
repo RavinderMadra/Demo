@@ -6,7 +6,7 @@ function loadData() {
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         success: function (result) {
-            debugger;
+            
             $('#ListData').html(result);
             alert("data Updated");
             
@@ -56,9 +56,8 @@ function Add() {
        });
 }
 
-//Function for getting the Data Based upon Employee ID  
-function getbyID(ID) {
-    $('#Name').css('border-color', 'lightgrey');    
+//Function for getting the Data Based upon Sales ID  
+function getbyID(ID) {      
 
     $.ajax({
         url: "../Sales/GetbyID/" + ID,
@@ -66,7 +65,7 @@ function getbyID(ID) {
         contentType: "application/json;charset=UTF-8",
         dataType: "json",
         success: function (result) {
-            debugger;
+           
             $('#Id').val(result[0].Id);
             $('#ddlProduct').val(result[0].ProductId);
             $('#ddlCustomer').val(result[0].CustomerId);
@@ -87,14 +86,14 @@ function converttimestamp(currdate) {
     //var singledate = "/Date(1365715800000)/";
     var singledate = currdate;
     var milisegundos = parseInt(singledate.replace("/Date(", "").replace(")/", ""));
-    var newDate = new Date(milisegundos).toLocaleDateString("en-UE");
+    var newDate = new Date(milisegundos).toLocaleDateString("en-NZ");
     console.log(newDate);
     return newDate;
 }
 
-//function for updating employee's record  
+//function for updating Sales record  
 function Update() {
-    debugger;
+
     var res = validate();
     if (!res) {
         return false;
@@ -106,7 +105,7 @@ function Update() {
         StoreId: $('#ddlStores').val(),
         DateSold: $('#txtDate').val()
     };
-    debugger;
+    
     $.ajax({
         url: "/Sales/Update",
         data: JSON.stringify(objsale),
@@ -114,8 +113,7 @@ function Update() {
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         success: function (result) {
-            loadData();
-            
+            loadData();            
             $('#myModal').modal('hide');
             clearTextBox()
         },
@@ -126,7 +124,7 @@ function Update() {
     });
 }
 
-//function for deleting employee's record  
+//function for deleting Sales record  
 function Delete(ID) {
 
     var ans = confirm("Are you sure you want to delete this Record?");    
@@ -155,17 +153,12 @@ function clearTextBox() {
     $('#ddlCustomer').val("");
     $('#ddlStores').val("");
     $('#txtDate').val("");
-    //$('#EmployeeID').val("");
-    //$('#Name').val("");
-    //$('#Age').val("");
-    //$('#State').val("");
-    //$('#Country').val("");
-    //$('#btnUpdate').hide();
-    //$('#btnAdd').show();
+    $('#btnUpdate').hide();
+    $('#btnAdd').show();
     //$('#Name').css('border-color', 'lightgrey');
     //$('#Age').css('border-color', 'lightgrey');
-    //$('#State').css('border-color', 'lightgrey');
-    //$('#Country').css('border-color', 'lightgrey');
+    //$('#Address').css('border-color', 'lightgrey');
+    //$('#Mobile').css('border-color', 'lightgrey');
 }
 
 

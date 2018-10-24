@@ -39,7 +39,7 @@ namespace DemoService.Sale
             // for new users
         }
 
-        /// Get all Store       
+        /// Get all Sales      
         public List<SaleViewModel> getbyId(int Id)
         {
             List<SaleViewModel> entities = new List<SaleViewModel>();
@@ -58,7 +58,7 @@ namespace DemoService.Sale
         }
 
 
-        /// Update Store information       
+        /// Update Sales information       
         public bool UpdateSales(SaleViewModel salesViewModel)
         {
             bool status = false;
@@ -91,7 +91,7 @@ namespace DemoService.Sale
         }
 
 
-        /// Delete Store        
+        /// Delete SalesRecord        
         public bool Delete(int Id)
         {
             try
