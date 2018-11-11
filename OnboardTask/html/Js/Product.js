@@ -40,6 +40,7 @@ function Add() {
         Name: $('#Name').val(),
         Price: $('#Price').val()
     };
+   
     $.ajax({
         url: "/Product/Add",
         data: JSON.stringify(Obj),
