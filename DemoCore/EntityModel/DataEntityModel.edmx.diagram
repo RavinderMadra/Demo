@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="59c38954b3e64318bbe40b2ea4ad77b5" Name="Diagram1" ZoomLevel="97">
-        <EntityTypeShape EntityType="TransportManagementSystemModel.tblCustomer" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="TransportManagementSystemModel.tblProduct" Width="1.5" PointX="0.75" PointY="9.625" />
-        <EntityTypeShape EntityType="TransportManagementSystemModel.tblProductSold" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="TransportManagementSystemModel.tblStore" Width="1.5" PointX="0.75" PointY="6.125" />
-        <AssociationConnector Association="TransportManagementSystemModel.FK_tblProductSold_tblCustomer" />
-        <AssociationConnector Association="TransportManagementSystemModel.FK_tblProductSold_tblProduct" />
-        <AssociationConnector Association="TransportManagementSystemModel.FK_tblProductSold_tblStore" />
+        <EntityTypeShape EntityType="TransportManagementSystemModel.tbl_Customer" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="TransportManagementSystemModel.tbl_Product" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="TransportManagementSystemModel.tbl_ProductSold" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="TransportManagementSystemModel.tbl_Store" Width="1.5" PointX="0.75" PointY="6.25" />
+        <AssociationConnector Association="TransportManagementSystemModel.FK_tbl_ProductSold_tbl_Customer" />
+        <AssociationConnector Association="TransportManagementSystemModel.FK_tbl_ProductSold_tbl_Product" />
+        <AssociationConnector Association="TransportManagementSystemModel.FK_tbl_ProductSold_tbl_Store" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

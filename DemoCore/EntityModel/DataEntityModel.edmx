@@ -5,116 +5,116 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="TransportManagementSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="tblCustomer">
+        <EntityType Name="tbl_Customer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Age" Type="int" Nullable="false" />
-          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CreatedDate" Type="date" Nullable="false" />
-          <Property Name="ModifiedDate" Type="date" Nullable="false" />
-          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="tblProduct">
+        <EntityType Name="tbl_Product">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CreatedDate" Type="date" Nullable="false" />
-          <Property Name="ModifiedDate" Type="date" Nullable="false" />
-          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="tblProductSold">
+        <EntityType Name="tbl_ProductSold">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="StoreId" Type="int" Nullable="false" />
-          <Property Name="DateSold" Type="date" Nullable="false" />
+          <Property Name="DateSold" Type="datetime" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CreatedDate" Type="date" Nullable="false" />
-          <Property Name="ModifiedDate" Type="date" Nullable="false" />
-          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="tblStore">
+        <EntityType Name="tbl_Store">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CreatedDate" Type="date" Nullable="false" />
-          <Property Name="ModifiedDate" Type="date" Nullable="false" />
-          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK_tblProductSold_tblCustomer">
-          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
-          <End Role="tblProductSold" Type="Self.tblProductSold" Multiplicity="*" />
+        <Association Name="FK_tbl_ProductSold_tbl_Customer">
+          <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="1" />
+          <End Role="tbl_ProductSold" Type="Self.tbl_ProductSold" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblCustomer">
+            <Principal Role="tbl_Customer">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="tblProductSold">
+            <Dependent Role="tbl_ProductSold">
               <PropertyRef Name="CustomerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblProductSold_tblProduct">
-          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
-          <End Role="tblProductSold" Type="Self.tblProductSold" Multiplicity="*" />
+        <Association Name="FK_tbl_ProductSold_tbl_Product">
+          <End Role="tbl_Product" Type="Self.tbl_Product" Multiplicity="1" />
+          <End Role="tbl_ProductSold" Type="Self.tbl_ProductSold" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblProduct">
+            <Principal Role="tbl_Product">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="tblProductSold">
+            <Dependent Role="tbl_ProductSold">
               <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblProductSold_tblStore">
-          <End Role="tblStore" Type="Self.tblStore" Multiplicity="1" />
-          <End Role="tblProductSold" Type="Self.tblProductSold" Multiplicity="*" />
+        <Association Name="FK_tbl_ProductSold_tbl_Store">
+          <End Role="tbl_Store" Type="Self.tbl_Store" Multiplicity="1" />
+          <End Role="tbl_ProductSold" Type="Self.tbl_ProductSold" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblStore">
+            <Principal Role="tbl_Store">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="tblProductSold">
+            <Dependent Role="tbl_ProductSold">
               <PropertyRef Name="StoreId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Function Name="GetSalesDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Id" Type="bigint" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="TransportManagementSystemModelStoreContainer">
-          <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblProductSold" EntityType="Self.tblProductSold" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblStore" EntityType="Self.tblStore" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_tblProductSold_tblCustomer" Association="Self.FK_tblProductSold_tblCustomer">
-            <End Role="tblCustomer" EntitySet="tblCustomer" />
-            <End Role="tblProductSold" EntitySet="tblProductSold" />
+          <EntitySet Name="tbl_Customer" EntityType="Self.tbl_Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ProductSold" EntityType="Self.tbl_ProductSold" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Store" EntityType="Self.tbl_Store" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_ProductSold_tbl_Customer" Association="Self.FK_tbl_ProductSold_tbl_Customer">
+            <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+            <End Role="tbl_ProductSold" EntitySet="tbl_ProductSold" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblProductSold_tblProduct" Association="Self.FK_tblProductSold_tblProduct">
-            <End Role="tblProduct" EntitySet="tblProduct" />
-            <End Role="tblProductSold" EntitySet="tblProductSold" />
+          <AssociationSet Name="FK_tbl_ProductSold_tbl_Product" Association="Self.FK_tbl_ProductSold_tbl_Product">
+            <End Role="tbl_Product" EntitySet="tbl_Product" />
+            <End Role="tbl_ProductSold" EntitySet="tbl_ProductSold" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblProductSold_tblStore" Association="Self.FK_tblProductSold_tblStore">
-            <End Role="tblStore" EntitySet="tblStore" />
-            <End Role="tblProductSold" EntitySet="tblProductSold" />
+          <AssociationSet Name="FK_tbl_ProductSold_tbl_Store" Association="Self.FK_tbl_ProductSold_tbl_Store">
+            <End Role="tbl_Store" EntitySet="tbl_Store" />
+            <End Role="tbl_ProductSold" EntitySet="tbl_ProductSold" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -122,56 +122,56 @@
     <edmx:ConceptualModels>
       <Schema Namespace="TransportManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="OnBoadTaskEntities" annotation:LazyLoadingEnabled="false">
-          <EntitySet Name="tblCustomers" EntityType="TransportManagementSystemModel.tblCustomer" />
-          <EntitySet Name="tblProducts" EntityType="TransportManagementSystemModel.tblProduct" />
-          <EntitySet Name="tblProductSolds" EntityType="TransportManagementSystemModel.tblProductSold" />
-          <EntitySet Name="tblStores" EntityType="TransportManagementSystemModel.tblStore" />
-          <AssociationSet Name="FK_tblProductSold_tblCustomer" Association="TransportManagementSystemModel.FK_tblProductSold_tblCustomer">
-            <End Role="tblCustomer" EntitySet="tblCustomers" />
-            <End Role="tblProductSold" EntitySet="tblProductSolds" />
+          <EntitySet Name="tbl_Customer" EntityType="TransportManagementSystemModel.tbl_Customer" />
+          <EntitySet Name="tbl_Product" EntityType="TransportManagementSystemModel.tbl_Product" />
+          <EntitySet Name="tbl_ProductSold" EntityType="TransportManagementSystemModel.tbl_ProductSold" />
+          <EntitySet Name="tbl_Store" EntityType="TransportManagementSystemModel.tbl_Store" />
+          <AssociationSet Name="FK_tbl_ProductSold_tbl_Customer" Association="TransportManagementSystemModel.FK_tbl_ProductSold_tbl_Customer">
+            <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+            <End Role="tbl_ProductSold" EntitySet="tbl_ProductSold" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblProductSold_tblProduct" Association="TransportManagementSystemModel.FK_tblProductSold_tblProduct">
-            <End Role="tblProduct" EntitySet="tblProducts" />
-            <End Role="tblProductSold" EntitySet="tblProductSolds" />
+          <AssociationSet Name="FK_tbl_ProductSold_tbl_Product" Association="TransportManagementSystemModel.FK_tbl_ProductSold_tbl_Product">
+            <End Role="tbl_Product" EntitySet="tbl_Product" />
+            <End Role="tbl_ProductSold" EntitySet="tbl_ProductSold" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblProductSold_tblStore" Association="TransportManagementSystemModel.FK_tblProductSold_tblStore">
-            <End Role="tblStore" EntitySet="tblStores" />
-            <End Role="tblProductSold" EntitySet="tblProductSolds" />
+          <AssociationSet Name="FK_tbl_ProductSold_tbl_Store" Association="TransportManagementSystemModel.FK_tbl_ProductSold_tbl_Store">
+            <End Role="tbl_Store" EntitySet="tbl_Store" />
+            <End Role="tbl_ProductSold" EntitySet="tbl_ProductSold" />
           </AssociationSet>
           <FunctionImport Name="GetSalesDetail" ReturnType="Collection(TransportManagementSystemModel.GetSalesDetail_Result)">
-          <Parameter Name="Id" Mode="In" Type="Int64" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
-        </EntityContainer>
-        <EntityType Name="tblCustomer">
+          </EntityContainer>
+        <EntityType Name="tbl_Customer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Age" Type="Int32" Nullable="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblProductSolds" Relationship="TransportManagementSystemModel.FK_tblProductSold_tblCustomer" FromRole="tblCustomer" ToRole="tblProductSold" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_ProductSold" Relationship="TransportManagementSystemModel.FK_tbl_ProductSold_tbl_Customer" FromRole="tbl_Customer" ToRole="tbl_ProductSold" />
         </EntityType>
-        <EntityType Name="tblProduct">
+        <EntityType Name="tbl_Product">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblProductSolds" Relationship="TransportManagementSystemModel.FK_tblProductSold_tblProduct" FromRole="tblProduct" ToRole="tblProductSold" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_ProductSold" Relationship="TransportManagementSystemModel.FK_tbl_ProductSold_tbl_Product" FromRole="tbl_Product" ToRole="tbl_ProductSold" />
         </EntityType>
-        <EntityType Name="tblProductSold">
+        <EntityType Name="tbl_ProductSold">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -179,75 +179,75 @@
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
           <Property Name="StoreId" Type="Int32" Nullable="false" />
+          <Property Name="DateSold" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblCustomer" Relationship="TransportManagementSystemModel.FK_tblProductSold_tblCustomer" FromRole="tblProductSold" ToRole="tblCustomer" />
-          <NavigationProperty Name="tblProduct" Relationship="TransportManagementSystemModel.FK_tblProductSold_tblProduct" FromRole="tblProductSold" ToRole="tblProduct" />
-          <NavigationProperty Name="tblStore" Relationship="TransportManagementSystemModel.FK_tblProductSold_tblStore" FromRole="tblProductSold" ToRole="tblStore" />
-          <Property Name="DateSold" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_Customer" Relationship="TransportManagementSystemModel.FK_tbl_ProductSold_tbl_Customer" FromRole="tbl_ProductSold" ToRole="tbl_Customer" />
+          <NavigationProperty Name="tbl_Product" Relationship="TransportManagementSystemModel.FK_tbl_ProductSold_tbl_Product" FromRole="tbl_ProductSold" ToRole="tbl_Product" />
+          <NavigationProperty Name="tbl_Store" Relationship="TransportManagementSystemModel.FK_tbl_ProductSold_tbl_Store" FromRole="tbl_ProductSold" ToRole="tbl_Store" />
         </EntityType>
-        <EntityType Name="tblStore">
+        <EntityType Name="tbl_Store">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblProductSolds" Relationship="TransportManagementSystemModel.FK_tblProductSold_tblStore" FromRole="tblStore" ToRole="tblProductSold" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_ProductSold" Relationship="TransportManagementSystemModel.FK_tbl_ProductSold_tbl_Store" FromRole="tbl_Store" ToRole="tbl_ProductSold" />
         </EntityType>
-        <Association Name="FK_tblProductSold_tblCustomer">
-          <End Type="TransportManagementSystemModel.tblCustomer" Role="tblCustomer" Multiplicity="1" />
-          <End Type="TransportManagementSystemModel.tblProductSold" Role="tblProductSold" Multiplicity="*" />
+        <Association Name="FK_tbl_ProductSold_tbl_Customer">
+          <End Type="TransportManagementSystemModel.tbl_Customer" Role="tbl_Customer" Multiplicity="1" />
+          <End Type="TransportManagementSystemModel.tbl_ProductSold" Role="tbl_ProductSold" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblCustomer">
+            <Principal Role="tbl_Customer">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="tblProductSold">
+            <Dependent Role="tbl_ProductSold">
               <PropertyRef Name="CustomerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblProductSold_tblProduct">
-          <End Type="TransportManagementSystemModel.tblProduct" Role="tblProduct" Multiplicity="1" />
-          <End Type="TransportManagementSystemModel.tblProductSold" Role="tblProductSold" Multiplicity="*" />
+        <Association Name="FK_tbl_ProductSold_tbl_Product">
+          <End Type="TransportManagementSystemModel.tbl_Product" Role="tbl_Product" Multiplicity="1" />
+          <End Type="TransportManagementSystemModel.tbl_ProductSold" Role="tbl_ProductSold" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblProduct">
+            <Principal Role="tbl_Product">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="tblProductSold">
+            <Dependent Role="tbl_ProductSold">
               <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblProductSold_tblStore">
-          <End Type="TransportManagementSystemModel.tblStore" Role="tblStore" Multiplicity="1" />
-          <End Type="TransportManagementSystemModel.tblProductSold" Role="tblProductSold" Multiplicity="*" />
+        <Association Name="FK_tbl_ProductSold_tbl_Store">
+          <End Type="TransportManagementSystemModel.tbl_Store" Role="tbl_Store" Multiplicity="1" />
+          <End Type="TransportManagementSystemModel.tbl_ProductSold" Role="tbl_ProductSold" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblStore">
+            <Principal Role="tbl_Store">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="tblProductSold">
+            <Dependent Role="tbl_ProductSold">
               <PropertyRef Name="StoreId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <ComplexType Name="GetSalesDetail_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="String" Name="CustomerName" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="CustomerId" Nullable="false" />
-          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="ProductId" Nullable="false" />
-          <Property Type="String" Name="StoreName" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="StoreId" Nullable="false" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="DateTime" Name="DateSold" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CustomerId" Nullable="false" />
+          <Property Type="Int32" Name="StoreId" Nullable="false" />
+          <Property Type="String" Name="StoreName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="50" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -255,9 +255,9 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TransportManagementSystemModelStoreContainer" CdmEntityContainer="OnBoadTaskEntities">
-          <EntitySetMapping Name="tblCustomers">
-            <EntityTypeMapping TypeName="TransportManagementSystemModel.tblCustomer">
-              <MappingFragment StoreEntitySet="tblCustomer">
+          <EntitySetMapping Name="tbl_Customer">
+            <EntityTypeMapping TypeName="TransportManagementSystemModel.tbl_Customer">
+              <MappingFragment StoreEntitySet="tbl_Customer">
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
@@ -270,9 +270,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblProducts">
-            <EntityTypeMapping TypeName="TransportManagementSystemModel.tblProduct">
-              <MappingFragment StoreEntitySet="tblProduct">
+          <EntitySetMapping Name="tbl_Product">
+            <EntityTypeMapping TypeName="TransportManagementSystemModel.tbl_Product">
+              <MappingFragment StoreEntitySet="tbl_Product">
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
@@ -284,15 +284,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblProductSolds">
-            <EntityTypeMapping TypeName="TransportManagementSystemModel.tblProductSold">
-              <MappingFragment StoreEntitySet="tblProductSold">
-                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
+          <EntitySetMapping Name="tbl_ProductSold">
+            <EntityTypeMapping TypeName="TransportManagementSystemModel.tbl_ProductSold">
+              <MappingFragment StoreEntitySet="tbl_ProductSold">
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
                 <ScalarProperty Name="StoreId" ColumnName="StoreId" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -300,9 +300,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblStores">
-            <EntityTypeMapping TypeName="TransportManagementSystemModel.tblStore">
-              <MappingFragment StoreEntitySet="tblStore">
+          <EntitySetMapping Name="tbl_Store">
+            <EntityTypeMapping TypeName="TransportManagementSystemModel.tbl_Store">
+              <MappingFragment StoreEntitySet="tbl_Store">
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
@@ -317,14 +317,14 @@
           <FunctionImportMapping FunctionImportName="GetSalesDetail" FunctionName="TransportManagementSystemModel.Store.GetSalesDetail">
             <ResultMapping>
               <ComplexTypeMapping TypeName="TransportManagementSystemModel.GetSalesDetail_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
-                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DateSold" ColumnName="DateSold" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -21,7 +21,7 @@ namespace DemoService.Store
             List<StoreViewModel> entities = new List<StoreViewModel>();
             // making values as trim  
 
-            var list = _Context.tblStores.Where(x => x.IsActive == true).ToList();
+            var list = _Context.tbl_Store.Where(x => x.IsActive == true).ToList();
             Mapper.Map(list, entities);
             return entities;
         }
@@ -31,7 +31,7 @@ namespace DemoService.Store
         public bool SaveStores(StoreViewModel storeViewModel)
         {
             bool status = false;
-            tblStore stores = new tblStore();
+            tbl_Store stores = new tbl_Store();
             Mapper.Map(storeViewModel, stores);
 
             stores.IsActive = true;
@@ -39,7 +39,7 @@ namespace DemoService.Store
             stores.ModifiedDate = DateTime.Now;
             stores.CreatedBy = "101";
             stores.ModifiedBy = "101";
-            _Context.tblStores.Add(stores);
+            _Context.tbl_Store.Add(stores);
             _Context.Configuration.ValidateOnSaveEnabled = true;
             _Context.SaveChanges();
             status = true;
@@ -55,7 +55,7 @@ namespace DemoService.Store
             try
             {
                 //var _usrsaltdetails = _Context.Users.FirstOrDefault(x => x.Id == user.Id);
-                var _storeDetails = _Context.tblStores.Find(storeViewModel.Id);
+                var _storeDetails = _Context.tbl_Store.Find(storeViewModel.Id);
 
                 if (_storeDetails != null)
                 {
@@ -79,7 +79,7 @@ namespace DemoService.Store
         {
             try
             {
-                var entity = _Context.tblStores.Find(Id);
+                var entity = _Context.tbl_Store.Find(Id);
                 if (entity != null)
                 {
                     entity.IsActive = false;

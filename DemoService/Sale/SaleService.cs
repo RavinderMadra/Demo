@@ -18,7 +18,7 @@ namespace DemoService.Sale
         {
             bool status = false;
 
-            tblProductSold product = new tblProductSold();
+            tbl_ProductSold product = new tbl_ProductSold();
             Mapper.Map(salesViewModel, product);
             product.ProductId = salesViewModel.ProductId;
             product.CustomerId = salesViewModel.CustomerId;
@@ -29,7 +29,7 @@ namespace DemoService.Sale
             product.ModifiedDate = DateTime.Now;
             product.CreatedBy = "101";
             product.ModifiedBy = "101";
-            _Context.tblProductSolds.Add(product);
+            _Context.tbl_ProductSold.Add(product);
             _Context.Configuration.ValidateOnSaveEnabled = true;
             _Context.SaveChanges();
             status = true;
@@ -65,7 +65,7 @@ namespace DemoService.Sale
             try
             {
                 //var saledetails = _Context.tblProductSolds.FirstOrDefault(x => x.Id == user.Id);
-                var _saleDetails = _Context.tblProductSolds.Find(salesViewModel.Id);
+                var _saleDetails = _Context.tbl_ProductSold.Find(salesViewModel.Id);
 
                 if (_saleDetails != null)
                 {
@@ -96,7 +96,7 @@ namespace DemoService.Sale
         {
             try
             {
-                var entity = _Context.tblCustomers.Find(Id);
+                var entity = _Context.tbl_ProductSold.Find(Id);
                 if (entity != null)
                 {
                     entity.IsActive = false;

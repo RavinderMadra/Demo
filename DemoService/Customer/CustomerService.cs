@@ -19,9 +19,17 @@ namespace DemoService.Customer
         public List<CustomerViewModel> GetAllCustomer()
         {
             List<CustomerViewModel> entities = new List<CustomerViewModel>();
-            // making values as trim  
-            var list = _Context.tblCustomers.Where(x => x.IsActive == true).ToList();
-            Mapper.Map(list, entities);
+            // making values as trim 
+            try
+            {
+                var list = _Context.tbl_Customer.Where(x => x.IsActive == true).ToList();
+                Mapper.Map(list, entities);
+            }
+            catch (Exception ex)
+            {
+                return entities;
+            }
+
             return entities;
         }               
 
@@ -30,7 +38,7 @@ namespace DemoService.Customer
         {
             bool status = false;
 
-            tblCustomer customer = new tblCustomer();
+            tbl_Customer customer = new tbl_Customer();
             Mapper.Map(customerViewModel, customer);
 
             customer.IsActive = true;
@@ -38,7 +46,7 @@ namespace DemoService.Customer
             customer.ModifiedDate = DateTime.Now;
             customer.CreatedBy = "101";
             customer.ModifiedBy = "101";
-            _Context.tblCustomers.Add(customer);
+            _Context.tbl_Customer.Add(customer);
             _Context.Configuration.ValidateOnSaveEnabled = true;
             _Context.SaveChanges();
             status = true;
@@ -50,7 +58,7 @@ namespace DemoService.Customer
         /// Get Customers detail by Id
         public CustomerViewModel GetCustomerDetailById(long Id)
         {
-            tblCustomer customers = _Context.tblCustomers.Where(x => x.Id == Id).FirstOrDefault();
+            tbl_Customer customers = _Context.tbl_Customer.Where(x => x.Id == Id).FirstOrDefault();
             return Mapper.Map(customers, new CustomerViewModel());
 
         }
@@ -62,7 +70,7 @@ namespace DemoService.Customer
             try
             {
 
-                var _customerDetail = _Context.tblCustomers.Find(customerViewModel.Id);
+                var _customerDetail = _Context.tbl_Customer.Find(customerViewModel.Id);
 
                 if (_customerDetail != null)
                 {
@@ -90,7 +98,7 @@ namespace DemoService.Customer
         {
             try
             {
-                var entity = _Context.tblCustomers.Find(Id);
+                var entity = _Context.tbl_Customer.Find(Id);
                 if (entity != null)
                 {
                     entity.IsActive = false;

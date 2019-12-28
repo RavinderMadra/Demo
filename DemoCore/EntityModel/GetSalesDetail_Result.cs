@@ -17,21 +17,21 @@ using System;
 public partial class GetSalesDetail_Result
 {
 
-    public int Id { get; set; }
+    public int ID { get; set; }
 
-    public string CustomerName { get; set; }
-
-    public int CustomerId { get; set; }
-
-    public string ProductName { get; set; }
+    public Nullable<System.DateTime> DateSold { get; set; }
 
     public int ProductId { get; set; }
 
-    public string StoreName { get; set; }
+    public string ProductName { get; set; }
+
+    public int CustomerId { get; set; }
 
     public int StoreId { get; set; }
 
-    public Nullable<System.DateTime> DateSold { get; set; }
+    public string StoreName { get; set; }
+
+    public string CustomerName { get; set; }
 
 }
 

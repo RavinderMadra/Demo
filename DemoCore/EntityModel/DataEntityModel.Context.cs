@@ -37,21 +37,21 @@ public partial class OnBoadTaskEntities : DbContext
     }
 
 
-    public virtual DbSet<tblCustomer> tblCustomers { get; set; }
+    public virtual DbSet<tbl_Customer> tbl_Customer { get; set; }
 
-    public virtual DbSet<tblProduct> tblProducts { get; set; }
+    public virtual DbSet<tbl_Product> tbl_Product { get; set; }
 
-    public virtual DbSet<tblProductSold> tblProductSolds { get; set; }
+    public virtual DbSet<tbl_ProductSold> tbl_ProductSold { get; set; }
 
-    public virtual DbSet<tblStore> tblStores { get; set; }
+    public virtual DbSet<tbl_Store> tbl_Store { get; set; }
 
 
-    public virtual ObjectResult<GetSalesDetail_Result> GetSalesDetail(Nullable<long> id)
+    public virtual ObjectResult<GetSalesDetail_Result> GetSalesDetail(Nullable<int> id)
     {
 
         var idParameter = id.HasValue ?
             new ObjectParameter("Id", id) :
-            new ObjectParameter("Id", typeof(long));
+            new ObjectParameter("Id", typeof(int));
 
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesDetail_Result>("GetSalesDetail", idParameter);

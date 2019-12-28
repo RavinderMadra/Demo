@@ -18,7 +18,7 @@ namespace DemoService.Product
         {
             List<ProductViewModel> entities = new List<ProductViewModel>();
             
-            var list = _Context.tblProducts.Where(x => x.IsActive == true).ToList();
+            var list = _Context.tbl_Product.Where(x => x.IsActive == true).ToList();
 
             Mapper.Map(list, entities);
 
@@ -29,7 +29,7 @@ namespace DemoService.Product
         {
             bool status = false;
 
-            tblProduct product = new tblProduct();
+            tbl_Product product = new tbl_Product();
             Mapper.Map(productViewModel, product);
 
             product.IsActive = true;
@@ -37,7 +37,7 @@ namespace DemoService.Product
             product.ModifiedDate = DateTime.Now;
             product.CreatedBy = "101";
             product.ModifiedBy = "101";
-            _Context.tblProducts.Add(product);
+            _Context.tbl_Product.Add(product);
             _Context.Configuration.ValidateOnSaveEnabled = true;
             _Context.SaveChanges();
             status = true;
@@ -52,7 +52,7 @@ namespace DemoService.Product
             try
             {
                 //var _usrsaltdetails = _Context.Users.FirstOrDefault(x => x.Id == user.Id);
-                var _productDetails = _Context.tblProducts.Find(productViewModel.Id);
+                var _productDetails = _Context.tbl_Product.Find(productViewModel.Id);
 
                 if (_productDetails != null)
                 {
@@ -78,7 +78,7 @@ namespace DemoService.Product
         {
             try
             {
-                var entity = _Context.tblProducts.Find(Id);
+                var entity = _Context.tbl_Product.Find(Id);
                 if (entity != null)
                 {
                     entity.IsActive = false;
