@@ -77,16 +77,16 @@
     <Compile Include="EntityModel\GetSalesDetail_Result.cs">
       <DependentUpon>DataEntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\tblCustomer.cs">
+    <Compile Include="EntityModel\tbl_Customer.cs">
       <DependentUpon>DataEntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\tblProduct.cs">
+    <Compile Include="EntityModel\tbl_Product.cs">
       <DependentUpon>DataEntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\tblProductSold.cs">
+    <Compile Include="EntityModel\tbl_ProductSold.cs">
       <DependentUpon>DataEntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\tblStore.cs">
+    <Compile Include="EntityModel\tbl_Store.cs">
       <DependentUpon>DataEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
