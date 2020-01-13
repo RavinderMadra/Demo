@@ -6,32 +6,32 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>H:\C#project\crud</_PublishTargetUrl>
+    <_PublishTargetUrl>H:\Publish_C#project\crud_publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Demo.Core.dll">
-      <publishTime>12/25/2019 08:35:17</publishTime>
+      <publishTime>01/13/2020 07:56:11</publishTime>
     </File>
     <File Include="bin/Demo.Core.dll.config">
       <publishTime>12/25/2019 06:57:03</publishTime>
     </File>
     <File Include="bin/Demo.Core.pdb">
-      <publishTime>12/25/2019 08:35:17</publishTime>
+      <publishTime>01/13/2020 07:56:11</publishTime>
     </File>
     <File Include="bin/DemoModel.dll">
-      <publishTime>12/25/2019 08:35:16</publishTime>
+      <publishTime>01/13/2020 07:56:12</publishTime>
     </File>
     <File Include="bin/DemoModel.pdb">
-      <publishTime>12/25/2019 08:35:16</publishTime>
+      <publishTime>01/13/2020 07:56:12</publishTime>
     </File>
     <File Include="bin/DemoService.dll">
-      <publishTime>12/25/2019 08:35:17</publishTime>
+      <publishTime>01/13/2020 07:56:12</publishTime>
     </File>
     <File Include="bin/DemoService.dll.config">
       <publishTime>12/24/2019 19:33:54</publishTime>
     </File>
     <File Include="bin/DemoService.pdb">
-      <publishTime>12/25/2019 08:35:17</publishTime>
+      <publishTime>01/13/2020 07:56:12</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>12/24/2019 19:33:58</publishTime>
@@ -52,10 +52,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/24/2019 19:34:11</publishTime>
     </File>
     <File Include="bin/OnboardTask.dll">
-      <publishTime>12/30/2019 09:40:53</publishTime>
+      <publishTime>01/13/2020 07:56:19</publishTime>
     </File>
     <File Include="bin/OnboardTask.pdb">
-      <publishTime>12/30/2019 09:40:53</publishTime>
+      <publishTime>01/13/2020 07:56:19</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>12/24/2019 19:34:10</publishTime>
@@ -244,16 +244,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/24/2019 19:33:54</publishTime>
     </File>
     <File Include="html/Js/Customer.js">
-      <publishTime>12/24/2019 19:33:56</publishTime>
+      <publishTime>01/03/2020 19:13:52</publishTime>
     </File>
     <File Include="html/Js/Product.js">
-      <publishTime>12/24/2019 19:33:56</publishTime>
+      <publishTime>01/13/2020 07:50:21</publishTime>
     </File>
     <File Include="html/Js/Sale.js">
       <publishTime>12/24/2019 19:33:56</publishTime>
     </File>
     <File Include="html/Js/Store.js">
-      <publishTime>12/24/2019 19:33:56</publishTime>
+      <publishTime>01/13/2020 07:53:07</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>12/24/2019 19:33:55</publishTime>
@@ -280,7 +280,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/24/2019 19:33:56</publishTime>
     </File>
     <File Include="Views/Product/Index.cshtml">
-      <publishTime>12/24/2019 19:33:56</publishTime>
+      <publishTime>01/07/2020 23:29:12</publishTime>
     </File>
     <File Include="Views/Sales/Index.cshtml">
       <publishTime>12/28/2019 22:30:47</publishTime>
@@ -289,7 +289,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/24/2019 19:33:56</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/24/2019 19:33:56</publishTime>
+      <publishTime>01/03/2020 18:31:44</publishTime>
     </File>
     <File Include="Views/Store/Index.cshtml">
       <publishTime>12/24/2019 19:33:56</publishTime>

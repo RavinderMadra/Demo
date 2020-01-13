@@ -17,7 +17,7 @@ function loadData() {
                 html += '<tr>';                
                 html += '<td>' + item.Name + '</td>';
                 html += '<td>' + item.Price + '</td>';
-                html += '<td class="text-center noExl"><a href="#" class="btn btn-success" onclick="return getbyID(' + item.Id + ')"><i class="fa fa-edit" >Edit</i></a> | <a href="#" class="btn btn-danger" onclick="Delele(' + item.Id + ')"><i class="fa fa-trash" >Delete</i></a></td>';
+                html += '<td><a href="#" class="btn btn-success" onclick="return getbyID(' + item.Id + ')"><i class="fa fa-edit" ></i>Edit</a>  <a href="#" class="btn btn-danger" onclick="Delele(' + item.Id + ')"><i class="fa fa-trash" ></i>Delete</a></td>';
                 html += '</tr>';
             });
             $('.tbody').html(html);

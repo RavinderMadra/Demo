@@ -4,11 +4,12 @@
 }
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
-<script src="~/Scripts/jquery-1.9.1.js"></script>
+@*<script src="~/Scripts/jquery-1.9.1.js"></script>*@
 <script src="~/Scripts/bootstrap.js"></script>
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <script src="~/html/Js/Customer.js"></script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
     <h2>Customer Record</h2><br />
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">Add New Customer</button><br /><br />
@@ -35,7 +36,7 @@
                 <h4 class="modal-title" id="myModalLabel">Add Customer</h4>
             </div>
             <div class="modal-body">
-                <form>         
+                <form>
                     <div class="form-group" style="display: none;">
                         <label for="Id">ID</label>
                         <input type="text" class="form-control" id="CustomerID" placeholder="Id" disabled="disabled" />
